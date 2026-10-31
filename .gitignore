@@ -1,0 +1,11 @@
+data/
+artifacts/
+mlruns/
+mlflow.db
+__pycache__/
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
