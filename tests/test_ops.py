@@ -6,8 +6,8 @@ import numpy as np
 import pytest
 from fastapi.testclient import TestClient
 
-from demandcast.api import ServiceState, create_app, load_intervals
-from demandcast.data import HORIZON
+from demandcast.api import ServiceState, build_state, create_app, load_intervals
+from demandcast.data import HORIZON, M5
 from demandcast.features import Encodings
 from demandcast.intervals import ConformalIntervals
 from demandcast.model import ModelConfig, fit
@@ -85,6 +85,30 @@ def test_training_job_only_writes_artifacts_when_promoted(tiny_m5, tracking, tmp
     # An identical retrain can't clear the improvement bar, so the service keeps the same model.
     assert not run_training(cfg=SMALL, policy=GatePolicy(), **arguments)["promote"]
     assert (artifacts / "manifest.json").read_text() == before
+
+
+def test_serving_origin_leaves_a_full_horizon_of_calendar(tiny_m5, tracking, tmp_path):
+    """On real M5, sales and the calendar end on the same day. A model trained up to it couldn't forecast anything."""
+    n = tiny_m5.sales.shape[1]
+    ended = M5(tiny_m5.ids, tiny_m5.sales, tiny_m5.prices[:, :n], tiny_m5.calendar.iloc[:n].reset_index(drop=True))
+    artifacts = tmp_path / "artifacts"
+    run_training(
+        m5=ended,
+        artifacts=artifacts,
+        tracking_uri=tracking["tracking_uri"],
+        artifact_root=str(tracking["artifact_root"]),
+        origins=[316, 344],
+        cfg=SMALL,
+        policy=GatePolicy(),
+        log=lambda _: None,
+    )
+    state = build_state(ended, artifacts)
+    assert state.origin == n - HORIZON
+    with TestClient(create_app(state)) as client:
+        item, store = ended.ids.iloc[0][["item_id", "store_id"]]
+        response = client.post("/forecast", json={"item_id": item, "store_id": store, "horizon": HORIZON})
+    assert response.status_code == 200
+    assert len(response.json()["points"]) == HORIZON
 
 
 def test_saved_intervals_round_trip(tmp_path):

@@ -1,0 +1,15 @@
+{
+  "requests": 300,
+  "horizon": 28,
+  "startup_seconds": 1.1,
+  "p50_ms": 8.38,
+  "p99_ms": 15.31,
+  "health": {
+    "status": "ok",
+    "model_version": "1",
+    "origin": 1941,
+    "series": 30490
+  },
+  "coverage_of_80_percent_interval_on_sampled_series": 0.7848,
+  "metrics_exposed": true
+}

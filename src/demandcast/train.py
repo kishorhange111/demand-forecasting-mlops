@@ -45,7 +45,8 @@ def run_training(
     scores, forecast, last_origin = backtest_scores(m5, encodings, cfg, origins, log)
 
     # The final model sees everything observed. Its quality is inferred from the windows above.
-    final_origin = m5.sales.shape[1]
+    # Features need each forecast day's price and calendar, so the service's origin must leave a full horizon of them.
+    final_origin = min(m5.sales.shape[1], len(m5.calendar) - HORIZON)
     booster, info = fit(m5, encodings, final_origin, cfg)
     decision = register_if_better(booster, scores, asdict(cfg), tracking_uri=tracking_uri, artifact_root=artifact_root, policy=policy)
     log(f"gate: {decision}")
@@ -94,7 +95,8 @@ def main() -> None:
     if args.clean:
         shutil.rmtree(args.artifacts, ignore_errors=True)
     m5 = load(args.data)
-    last = N_OBSERVED_DAYS - HORIZON
+    # Backtest windows end where the served forecast begins, so intervals are never calibrated on the window they cover.
+    last = N_OBSERVED_DAYS - 2 * HORIZON
     origins = [last - HORIZON * k for k in range(args.windows - 1, -1, -1)]
     cfg = ModelConfig(train_days=args.train_days, trees=args.trees, threads=args.threads)
     run_training(m5, cfg, Path(args.artifacts), args.tracking_uri, args.artifact_root, origins, GatePolicy())

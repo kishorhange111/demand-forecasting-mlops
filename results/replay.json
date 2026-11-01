@@ -1,0 +1,356 @@
+{
+  "origins": [
+    1633,
+    1661,
+    1689,
+    1717,
+    1745,
+    1773,
+    1801,
+    1829,
+    1857,
+    1885,
+    1913,
+    1941
+  ],
+  "config": {
+    "train_days": 365,
+    "trees": 200,
+    "learning_rate": 0.05,
+    "num_leaves": 127,
+    "min_data_in_leaf": 100,
+    "feature_fraction": 0.5,
+    "bagging_fraction": 0.3,
+    "max_bin": 127,
+    "tweedie_power": 1.1,
+    "threads": 6,
+    "seed": 0,
+    "excluded_features": []
+  },
+  "policy": {
+    "error_increase": 0.1,
+    "psi_threshold": 0.2,
+    "min_features_over": 3
+  },
+  "monitored_features": [
+    "lag_28",
+    "rmean_7",
+    "rmean_28",
+    "rmean_56",
+    "rstd_28",
+    "nonzero_28",
+    "price",
+    "price_relative",
+    "price_change_28"
+  ],
+  "strategies": {
+    "static": {
+      "mean_wrmsse": 0.729196674965667,
+      "worst_window": 0.9856199638731908,
+      "fits": 1,
+      "fit_seconds": 265.9285977999971,
+      "by_window": {
+        "1633": 0.6531941461898179,
+        "1661": 0.9856199638731908,
+        "1689": 0.7233329064755294,
+        "1717": 0.6702882809371434,
+        "1745": 0.8172032082659566,
+        "1773": 0.7641418925704552,
+        "1801": 0.6499358902467299,
+        "1829": 0.7457304067895106,
+        "1857": 0.7377008133483064,
+        "1885": 0.6098820997547558,
+        "1913": 0.7582165293721927,
+        "1941": 0.6351139617644136
+      },
+      "trained_at": {
+        "1633": 1633,
+        "1661": 1633,
+        "1689": 1633,
+        "1717": 1633,
+        "1745": 1633,
+        "1773": 1633,
+        "1801": 1633,
+        "1829": 1633,
+        "1857": 1633,
+        "1885": 1633,
+        "1913": 1633,
+        "1941": 1633
+      }
+    },
+    "scheduled": {
+      "mean_wrmsse": 0.6944039400989447,
+      "worst_window": 0.986261140330245,
+      "fits": 12,
+      "fit_seconds": 48722.72937919994,
+      "by_window": {
+        "1633": 0.6531941461898179,
+        "1661": 0.986261140330245,
+        "1689": 0.698514960197055,
+        "1717": 0.6252888551860374,
+        "1745": 0.8164705680714879,
+        "1773": 0.6639620833402478,
+        "1801": 0.6470004016604646,
+        "1829": 0.7448701588049754,
+        "1857": 0.7051525978190911,
+        "1885": 0.5499369762958325,
+        "1913": 0.6814423422883432,
+        "1941": 0.5607530510037376
+      },
+      "trained_at": {
+        "1633": 1633,
+        "1661": 1661,
+        "1689": 1689,
+        "1717": 1717,
+        "1745": 1745,
+        "1773": 1773,
+        "1801": 1801,
+        "1829": 1829,
+        "1857": 1857,
+        "1885": 1885,
+        "1913": 1913,
+        "1941": 1941
+      }
+    },
+    "triggered": {
+      "mean_wrmsse": 0.7090969600338366,
+      "worst_window": 0.9856199638731908,
+      "fits": 4,
+      "fit_seconds": 934.9566419999755,
+      "by_window": {
+        "1633": 0.6531941461898179,
+        "1661": 0.9856199638731908,
+        "1689": 0.698514960197055,
+        "1717": 0.6611309388364596,
+        "1745": 0.8206439998817031,
+        "1773": 0.6639620833402478,
+        "1801": 0.64875629046006,
+        "1829": 0.7501570776620196,
+        "1857": 0.7051525978190911,
+        "1885": 0.5870845676467643,
+        "1913": 0.7212350346515025,
+        "1941": 0.6137118598481274
+      },
+      "trained_at": {
+        "1633": 1633,
+        "1661": 1633,
+        "1689": 1689,
+        "1717": 1689,
+        "1745": 1689,
+        "1773": 1773,
+        "1801": 1773,
+        "1829": 1773,
+        "1857": 1857,
+        "1885": 1857,
+        "1913": 1857,
+        "1941": 1857
+      }
+    }
+  },
+  "decisions": [
+    {
+      "origin": 1661,
+      "psi": {
+        "lag_28": 0.0002,
+        "rmean_7": 0.0006,
+        "rmean_28": 0.0009,
+        "rmean_56": 0.0032,
+        "rstd_28": 0.0005,
+        "nonzero_28": 0.0007,
+        "price": 0.0003,
+        "price_relative": 0.0039,
+        "price_change_28": 0.0015
+      },
+      "retrain": false,
+      "reasons": [],
+      "error_ratio": 1.0,
+      "features_over_psi": []
+    },
+    {
+      "origin": 1689,
+      "psi": {
+        "lag_28": 0.0002,
+        "rmean_7": 0.0009,
+        "rmean_28": 0.0015,
+        "rmean_56": 0.0038,
+        "rstd_28": 0.0021,
+        "nonzero_28": 0.0009,
+        "price": 0.0004,
+        "price_relative": 0.0048,
+        "price_change_28": 0.0004
+      },
+      "retrain": true,
+      "reasons": [
+        "error up 50.9% against the reference"
+      ],
+      "error_ratio": 1.508923448904838,
+      "features_over_psi": []
+    },
+    {
+      "origin": 1717,
+      "psi": {
+        "lag_28": 0.0003,
+        "rmean_7": 0.0011,
+        "rmean_28": 0.0015,
+        "rmean_56": 0.0026,
+        "rstd_28": 0.0024,
+        "nonzero_28": 0.0011,
+        "price": 0.0003,
+        "price_relative": 0.0068,
+        "price_change_28": 0.0011
+      },
+      "retrain": false,
+      "reasons": [],
+      "error_ratio": 1.0,
+      "features_over_psi": []
+    },
+    {
+      "origin": 1745,
+      "psi": {
+        "lag_28": 0.0001,
+        "rmean_7": 0.0014,
+        "rmean_28": 0.0042,
+        "rmean_56": 0.0051,
+        "rstd_28": 0.0039,
+        "nonzero_28": 0.0029,
+        "price": 0.0004,
+        "price_relative": 0.0074,
+        "price_change_28": 0.0038
+      },
+      "retrain": false,
+      "reasons": [],
+      "error_ratio": 0.9464807148152573,
+      "features_over_psi": []
+    },
+    {
+      "origin": 1773,
+      "psi": {
+        "lag_28": 0.0008,
+        "rmean_7": 0.0009,
+        "rmean_28": 0.0016,
+        "rmean_56": 0.0047,
+        "rstd_28": 0.0016,
+        "nonzero_28": 0.0012,
+        "price": 0.0004,
+        "price_relative": 0.0056,
+        "price_change_28": 0.0087
+      },
+      "retrain": true,
+      "reasons": [
+        "error up 17.5% against the reference"
+      ],
+      "error_ratio": 1.1748409792829562,
+      "features_over_psi": []
+    },
+    {
+      "origin": 1801,
+      "psi": {
+        "lag_28": 0.0034,
+        "rmean_7": 0.005,
+        "rmean_28": 0.0084,
+        "rmean_56": 0.0057,
+        "rstd_28": 0.008,
+        "nonzero_28": 0.01,
+        "price": 0.0,
+        "price_relative": 0.008,
+        "price_change_28": 0.0014
+      },
+      "retrain": false,
+      "reasons": [],
+      "error_ratio": 1.0,
+      "features_over_psi": []
+    },
+    {
+      "origin": 1829,
+      "psi": {
+        "lag_28": 0.0002,
+        "rmean_7": 0.0021,
+        "rmean_28": 0.0084,
+        "rmean_56": 0.0061,
+        "rstd_28": 0.008,
+        "nonzero_28": 0.0093,
+        "price": 0.0001,
+        "price_relative": 0.0062,
+        "price_change_28": 0.0133
+      },
+      "retrain": false,
+      "reasons": [],
+      "error_ratio": 0.9770984017585903,
+      "features_over_psi": []
+    },
+    {
+      "origin": 1857,
+      "psi": {
+        "lag_28": 0.0011,
+        "rmean_7": 0.0018,
+        "rmean_28": 0.001,
+        "rmean_56": 0.0019,
+        "rstd_28": 0.0004,
+        "nonzero_28": 0.0009,
+        "price": 0.0011,
+        "price_relative": 0.0107,
+        "price_change_28": 0.0119
+      },
+      "retrain": true,
+      "reasons": [
+        "error up 13.0% against the reference"
+      ],
+      "error_ratio": 1.1298191515517628,
+      "features_over_psi": []
+    },
+    {
+      "origin": 1885,
+      "psi": {
+        "lag_28": 0.0022,
+        "rmean_7": 0.0108,
+        "rmean_28": 0.0168,
+        "rmean_56": 0.0181,
+        "rstd_28": 0.0168,
+        "nonzero_28": 0.0177,
+        "price": 0.0025,
+        "price_relative": 0.007,
+        "price_change_28": 0.0083
+      },
+      "retrain": false,
+      "reasons": [],
+      "error_ratio": 1.0,
+      "features_over_psi": []
+    },
+    {
+      "origin": 1913,
+      "psi": {
+        "lag_28": 0.0043,
+        "rmean_7": 0.022,
+        "rmean_28": 0.0301,
+        "rmean_56": 0.0258,
+        "rstd_28": 0.0298,
+        "nonzero_28": 0.0308,
+        "price": 0.0026,
+        "price_relative": 0.01,
+        "price_change_28": 0.0121
+      },
+      "retrain": false,
+      "reasons": [],
+      "error_ratio": 0.8325638584648347,
+      "features_over_psi": []
+    },
+    {
+      "origin": 1941,
+      "psi": {
+        "lag_28": 0.0108,
+        "rmean_7": 0.0519,
+        "rmean_28": 0.0638,
+        "rmean_56": 0.0626,
+        "rstd_28": 0.057,
+        "nonzero_28": 0.0637,
+        "price": 0.0023,
+        "price_relative": 0.0101,
+        "price_change_28": 0.0078
+      },
+      "retrain": false,
+      "reasons": [],
+      "error_ratio": 1.022807030538002,
+      "features_over_psi": []
+    }
+  ]
+}
